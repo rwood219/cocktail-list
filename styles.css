@@ -9,12 +9,15 @@ h1 {
 
 body {
     background-color: #3dbfc4;
-    background-image: url("/Martini.jpg");
+    background-image: url("Public/Martini.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 ul {
     color: white;
     list-style: none;
+    padding-top: 50px;
 }
 
 button {
@@ -25,4 +28,8 @@ button {
      border: none;
      border-radius: 5px;
      opacity: .7;
+ }
+
+ header { 
+     position: fixed;
  }
