@@ -23,6 +23,9 @@ ul {
 button {
     border-radius: 25px;
     border: none;
+    color: white;
+    background-color: white;
+    z-index: 0;
 }
  #search {
      border: none;
