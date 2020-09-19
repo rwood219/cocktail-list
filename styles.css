@@ -1,11 +1,28 @@
+* {
+    font-family: monospace;
+    font-size: large;
+    
+}
+h1 {
+    color: white
+}
+
 body {
-    background: gray;
+    background-color: #3dbfc4;
+    background-image: url("/Martini.jpg");
 }
 
 ul {
+    color: white;
     list-style: none;
 }
 
-.search-btn {
-
+button {
+    border-radius: 25px;
+    border: none;
 }
+ #search {
+     border: none;
+     border-radius: 5px;
+     opacity: .7;
+ }

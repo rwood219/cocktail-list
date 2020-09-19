@@ -1,9 +1,8 @@
 window.addEventListener("load", () => {
-
   getSearch = () => {
-    //drinkName = "rum";
+    drinkName = "rum";
     let searchText = document.getElementById("search").value;
-    drinkName = searchText;
+    //drinkName = searchText;
 
     fetch(
       `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`
@@ -48,11 +47,10 @@ window.addEventListener("load", () => {
         }
       });
     });
-  }; //out of function
+  }; //out of function`
   //add this listener to the input box
-    document.getElementById('clear').addEventListener('click', ()=> {
-        let recipe = document.getElementById('recipe');
-        recipe.innerHTML = ''
-    });
-
+  document.getElementById("clear").addEventListener("click", () => {
+    let recipe = document.getElementById("recipe");
+    recipe.innerHTML = "";
+  });
 });
