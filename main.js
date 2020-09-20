@@ -6,6 +6,7 @@ window.addEventListener("load", () => {
   };
 
   fetch(
+    /*     'https://www.thecocktaildb.com/api/json/v1/1/random.php' */
     //should be random
     `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=rum`
   ).then(function (response) {
@@ -42,6 +43,7 @@ window.addEventListener("load", () => {
           console.log(data);
           let searchedDrink = data.drinks;
           let constructor = new RegExp("^strIngredient$", "gi");
+
           /*    console.log(searchedDrink[0].strInstructions); */
 
           //ingrediant vars
@@ -77,19 +79,18 @@ window.addEventListener("load", () => {
             recipe.appendChild(createListItem(ing4 + " " + msr4));
             recipe.appendChild(createListItem(ing5 + " " + msr5));
             //recipe.appendChild(document.createElement('button'))
-            recipe.appendChild(document.createElement("br"));  recipe.appendChild(document.createElement("br"));
+            recipe.appendChild(document.createElement("br"));
+            recipe.appendChild(document.createElement("br"));
           }
         });
       });
     }; //; //out of click function*/
 
-    /* comment out for to enable click search */ document
-      .getElementById("clear")
-      .addEventListener("click", () => {
-        let recipe = document.getElementById("recipe");
-        recipe.innerHTML = "";
-        let search = document.getElementById("search");
-        search.innerHTML = "";
-      });
+    document.getElementById("clear").addEventListener("click", () => {
+      let recipe = document.getElementById("recipe");
+      recipe.innerHTML = "";
+      let search = document.getElementById("search");
+      search.innerHTML = "";
+    });
   });
 });

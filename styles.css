@@ -2,6 +2,7 @@
     font-family: monospace;
     font-size: large;
     /* border: 1px solid orange; */
+
 }
 h1 {
     color: white
@@ -11,6 +12,7 @@ body {
     background-image: url("/Public/Martini.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
+    padding: 20px;
 }
  
 #clear {
