@@ -1,17 +1,30 @@
 * {
     font-family: monospace;
     font-size: large;
-    
+    /* border: 1px solid orange; */
 }
 h1 {
     color: white
 }
 
 body {
-    background-color: #3dbfc4;
     background-image: url("/Public/Martini.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
+}
+ 
+#clear {
+    margin: 10px;
+}
+
+#suggestion {
+    padding-top: 100px;
+/*     border: 2px solid red; */
+}
+
+#suggestions {
+    position: relative;
+ padding: 0px;
 }
 
 ul {
@@ -35,4 +48,5 @@ button {
 
  header { 
      position: fixed;
+     margin: 10px;
  }
