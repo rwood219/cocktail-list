@@ -1,4 +1,8 @@
 window.addEventListener("load", () => {
+  
+
+  const recipe = document.getElementById("recipe");
+
   createListItem = (text) => {
     let li = document.createElement("li");
     li.textContent = text;
@@ -11,21 +15,14 @@ window.addEventListener("load", () => {
         console.log("problem" + response.status);
       }
       response.json().then(function (data) {
-        console.log(data);
-        console.log(data.drinks);
         randomDrinks = data.drinks;
         let displayDrink = document.querySelector("#suggestions");
         let randomInstructionText = document.querySelector("#instruction-text");
 
-        //click listener to display random drink instructins when that element is clicked; THIS SHOULD TOGGLE
+        //click listener to display random drink instructions when that element is clicked; THIS SHOULD TOGGLE
         displayDrink.addEventListener("click", () => {
           randomInstructionText.textContent = randomDrinks[0].strInstructions;
         });
-
-        //NEED TO TOGGLE INSTRUCTIONS
-        /*   displayDrink.addEventListener('click', ()=>{
-          randomInstructionText.textContent = ''
-        }) */
 
         //displays random drink name and ingrediants
         for (let i = 0; i < 15; i++) {
@@ -45,6 +42,31 @@ window.addEventListener("load", () => {
         }
       });
 
+      //=========LOOP IMG DIV FOR SEARCH===========
+      //addeventlistener in loop
+      let searchTxt = document.querySelector(".thumb-nail-images").children;
+
+      for (let i = 0; i < searchTxt.length; i++) {
+        let text = searchTxt[i].textContent;
+        searchTxt[i].addEventListener("click", () => {
+
+          fetch(
+            `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${text}`
+          ).then(function (response) {
+            if (response.status !== 200) {
+              console.log("problem" + response.status);
+            }
+            response.json().then(function (data) {
+              console.log(data.drinks);
+              let currentDrinkSearch = data.drinks
+              recipe.appendChild(createListItem(currentDrinkSearch[i].strDrink));
+            });
+          });
+        });
+      } //LEAVE THIS ALONE********************
+
+
+      //==============SEARCH SECTION=========
       //search api for specific drink names or ingrediants
       getSearch = () => {
         drinkName = "martini";
@@ -85,7 +107,7 @@ window.addEventListener("load", () => {
               let msr5 = searchedDrink[i].strMeasure5;
               msr5 === null ? (msr5 = "") : (msr5 = msr5);
               //set ui stuff
-              const recipe = document.getElementById("recipe");
+             /*  const recipe = document.getElementById("recipe"); */
               recipe.appendChild(createListItem(drinkName));
               recipe.appendChild(document.createElement("br"));
               recipe.appendChild(createListItem(ing1 + " " + msr1));
@@ -93,14 +115,14 @@ window.addEventListener("load", () => {
               recipe.appendChild(createListItem(ing3 + " " + msr3));
               recipe.appendChild(createListItem(ing4 + " " + msr4));
               recipe.appendChild(createListItem(ing5 + " " + msr5));
-              //recipe.appendChild(document.createElement('button'))
               recipe.appendChild(document.createElement("br"));
               recipe.appendChild(document.createElement("br"));
             }
           });
         });
-      }; //; //out of click function*/
-      //this clears searched drinks
+      }; // END SEARCH click
+
+      //============CLEARS SEARCH RESULTS===
       document.getElementById("clear").addEventListener("click", () => {
         let recipe = document.getElementById("recipe");
         recipe.innerHTML = "";
@@ -110,3 +132,4 @@ window.addEventListener("load", () => {
     }
   );
 });
+
