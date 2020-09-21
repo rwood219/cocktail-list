@@ -1,6 +1,4 @@
 window.addEventListener("load", () => {
-  
-
   const recipe = document.getElementById("recipe");
 
   createListItem = (text) => {
@@ -16,10 +14,15 @@ window.addEventListener("load", () => {
       }
       response.json().then(function (data) {
         randomDrinks = data.drinks;
+
+        console.log(data)
+        let regexSearch = ('^/strIngredient$/gi')
+
+      console.log(data.drinks[0].regexSearch)
+
         let displayDrink = document.querySelector("#suggestions");
         let randomInstructionText = document.querySelector("#instruction-text");
 
-        //click listener to display random drink instructions when that element is clicked; THIS SHOULD TOGGLE
         displayDrink.addEventListener("click", () => {
           randomInstructionText.textContent = randomDrinks[0].strInstructions;
         });
@@ -46,32 +49,47 @@ window.addEventListener("load", () => {
       //addeventlistener in loop
       let searchTxt = document.querySelector(".thumb-nail-images").children;
 
+
       for (let i = 0; i < searchTxt.length; i++) {
         let text = searchTxt[i].textContent;
         searchTxt[i].addEventListener("click", () => {
-
           fetch(
             `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${text}`
           ).then(function (response) {
             if (response.status !== 200) {
               console.log("problem" + response.status);
             }
+        
             response.json().then(function (data) {
               console.log(data.drinks);
-              let currentDrinkSearch = data.drinks
-              recipe.appendChild(createListItem(currentDrinkSearch[i].strDrink));
+              let currentDrinkSearch = data.drinks;
+              for (let i = 0; i < currentDrinkSearch.length; i++) {
+                console.log(currentDrinkSearch[i]);
+                recipe.appendChild(
+                  createListItem(currentDrinkSearch[i].strDrink)
+                );
+                recipe.appendChild(
+                  createListItem(currentDrinkSearch[i].strIngredient1)
+                );
+                recipe.appendChild(
+                  createListItem(currentDrinkSearch[i].strIngredient2)
+                );
+                recipe.appendChild(
+                  createListItem(currentDrinkSearch[i].strIngredient3)
+                );
+                recipe.appendChild(document.createElement("br"));
+              }
             });
           });
         });
-      } //LEAVE THIS ALONE********************
-
+      } //LEAVE THIS ALONE**/\/\/\/\******************
 
       //==============SEARCH SECTION=========
       //search api for specific drink names or ingrediants
       getSearch = () => {
-        drinkName = "martini";
+        //drinkName = "martini";
         let searchText = document.getElementById("search").value;
-        //drinkName = searchText;
+        drinkName = searchText;
 
         fetch(
           `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`
@@ -107,7 +125,7 @@ window.addEventListener("load", () => {
               let msr5 = searchedDrink[i].strMeasure5;
               msr5 === null ? (msr5 = "") : (msr5 = msr5);
               //set ui stuff
-             /*  const recipe = document.getElementById("recipe"); */
+              /*  const recipe = document.getElementById("recipe"); */
               recipe.appendChild(createListItem(drinkName));
               recipe.appendChild(document.createElement("br"));
               recipe.appendChild(createListItem(ing1 + " " + msr1));
@@ -123,6 +141,7 @@ window.addEventListener("load", () => {
       }; // END SEARCH click
 
       //============CLEARS SEARCH RESULTS===
+    /*   document.getElementByTagName('body') */
       document.getElementById("clear").addEventListener("click", () => {
         let recipe = document.getElementById("recipe");
         recipe.innerHTML = "";
@@ -132,4 +151,3 @@ window.addEventListener("load", () => {
     }
   );
 });
-

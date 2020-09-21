@@ -7,36 +7,38 @@
     <title>Document</title>
   </head>
   <body>
-    <nav id="nav">
-      <button>MENU</button>
-      <button>nutrition</button>
-      <button>Liquor</button>
-      <button>Saved</button>
-    </nav>
-    <br />
 
-    <header>
-      <input type="text" id="search" placeholder="search drinks" />
-      <button onclick="getSearch()" id="search-btn">SEARCH</button>
-      <button id="clear">CLEAR</button>
-    </header>
-
-    <br />
-    <div class="thumb-nail-images">
-      <p>rum</p>
-      <p>Tequila</p>
-      <p>Vodka</p>
-    
+    <div class="header-text">
+        <h1>Drink stuff</h1>
     </div>
+    <header>
+        
+        <input type="text" id="search" placeholder="search drinks" />
+        <button onclick="getSearch()" id="search-btn">SEARCH</button>
+        <button id="clear">CLEAR</button>
+      </header>
+  
+      <br />
+
+
+    <div class="thumb-nail-images">
+        <p>rum</p>
+        <p>Tequila</p>
+        <p>Vodka</p>
+        <p>Gin</p>
+        <p>Bourbon</p>
+        <p>Beer</p>
+      
+      </div>
 
     <div id="suggestion">
-      <h1>Random suggestion</h1>
+      <h1>Featured Drink</h1>
       <ul id="suggestions"></ul>
       <p id="instruction-text"></p>
     </div>
 
     <ul id="recipe"></ul>
-    
+
 
     <script src="/main.js"></script>
   </body>
