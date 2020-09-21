@@ -7,6 +7,7 @@ window.addEventListener("load", () => {
     return li;
   };
 
+  //GET RANDOM RECIPE ON WINDOW LOAD
   fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`).then(
     function (response) {
       if (response.status !== 200) {
@@ -15,10 +16,10 @@ window.addEventListener("load", () => {
       response.json().then(function (data) {
         randomDrinks = data.drinks;
 
-        console.log(data)
-        let regexSearch = ('^/strIngredient$/gi')
+        console.log(data);
+        let regexSearch = "^/strIngredient$/gi";
 
-      console.log(data.drinks[0].regexSearch)
+        console.log(data.drinks[0].regexSearch);
 
         let displayDrink = document.querySelector("#suggestions");
         let randomInstructionText = document.querySelector("#instruction-text");
@@ -27,7 +28,7 @@ window.addEventListener("load", () => {
           randomInstructionText.textContent = randomDrinks[0].strInstructions;
         });
 
-        //displays random drink name and ingrediants
+        //ingredients for random drinks
         for (let i = 0; i < 15; i++) {
           displayDrink.appendChild(createListItem(randomDrinks[i].strDrink));
           displayDrink.appendChild(
@@ -45,11 +46,8 @@ window.addEventListener("load", () => {
         }
       });
 
-      //=========LOOP IMG DIV FOR SEARCH===========
-      //addeventlistener in loop
+      //SET UI FOR CURRENT CLICKED DRINK ELEM
       let searchTxt = document.querySelector(".thumb-nail-images").children;
-
-
       for (let i = 0; i < searchTxt.length; i++) {
         let text = searchTxt[i].textContent;
         searchTxt[i].addEventListener("click", () => {
@@ -59,7 +57,7 @@ window.addEventListener("load", () => {
             if (response.status !== 200) {
               console.log("problem" + response.status);
             }
-        
+
             response.json().then(function (data) {
               console.log(data.drinks);
               let currentDrinkSearch = data.drinks;
@@ -82,7 +80,7 @@ window.addEventListener("load", () => {
             });
           });
         });
-      } //LEAVE THIS ALONE**/\/\/\/\******************
+      } // dont delete left bracket
 
       //==============SEARCH SECTION=========
       //search api for specific drink names or ingrediants
@@ -141,7 +139,7 @@ window.addEventListener("load", () => {
       }; // END SEARCH click
 
       //============CLEARS SEARCH RESULTS===
-    /*   document.getElementByTagName('body') */
+      /*   document.getElementByTagName('body') */
       document.getElementById("clear").addEventListener("click", () => {
         let recipe = document.getElementById("recipe");
         recipe.innerHTML = "";
