@@ -1,5 +1,5 @@
 * {
-  font-family: monospace;
+  font-family: roboto;
   font-size: large;
   /* border: 1px solid orange; */
 }
@@ -11,6 +11,7 @@ body {
   background-image: url("/Public/Martini.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
+padding-left: 5px;
 
 }
 
@@ -18,8 +19,7 @@ body {
   margin: 10px;
 }
 
-.thumb-nail-images {
-  
+.thumb-nail-images {  
   display: grid;
   justify-content: space-evenly;
   grid-template-columns: 3;
@@ -27,6 +27,7 @@ body {
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 10px;
   margin-top: 60px;
+  position: relative;
 }
 
 .thumb-nail-images > p {
