@@ -102,6 +102,7 @@ header > button {
 
 header {
   position: fixed;
+  padding: 20px;
   margin: 20px;
   z-index: 0;
   background-color: black;
@@ -110,4 +111,21 @@ header {
 
 #recipe > li {
   text-align: center;
+}
+
+#recipe > li:first-child {
+  border: 2px solid red;
+}
+
+.change-stuff {
+  color: gray;
+}
+
+#recipe {
+padding: 10px;
+}
+.recipe-ctn {
+  position: absolute;
+  margin: 20px;
+  padding-top: 250px ;
 }
