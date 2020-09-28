@@ -2,7 +2,7 @@
   font-family: roboto;
   font-size: large;
   margin: 0px;
-  padding: 0%;
+  padding: 0px;
   /* border: 1px solid orange; */
 }
 h1 {
@@ -13,7 +13,7 @@ body {
 /* background-image: url("/Public/Martini.jpg"); */ 
 background-color: rgb(0, 0, 0);
   background-attachment: fixed;
-  padding-right: 10px;
+  margin-right: 100px;
 }
 
 #clear {
@@ -52,37 +52,14 @@ background-color: rgb(0, 0, 0);
   font-size: 32px;
 }
 
-#suggestions {
-  position: relative;
-  padding: 0px;
-margin-top: 200px;
-}
-
-#src-result {
-  text-align: center;
-  margin: 30px 0px 10px 0px;
-}
-
-#suggestions > li {
-  text-align: center;
-}
-
-#suggestion > h1 {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
 ul {
   color: white;
   list-style: none;
-  padding-top: 50px;
-  margin-left: 20px;
-  
+  padding-top: 500px;
+  margin-left: 100px;  
 }
 
-#instruction-text {
-  color: white;
-}
+
 
 header > button {
   border-radius: 25px;
@@ -98,12 +75,14 @@ header > button {
   opacity: 0.7;
   width: 100%;
   margin-left: 0px;
+  width: 95%;
 }
 
 header {
   position: fixed;
-  padding: 20px;
-  margin: 20px;
+  padding: 0px;
+  margin: 0px;
+  margin-right: 20px;
   z-index: 0;
   background-color: black;
   margin-top: 0px;
@@ -113,9 +92,9 @@ header {
   text-align: center;
 }
 
-#recipe > li:first-child {
+/* #recipe > li:first-child {
   border: 2px solid red;
-}
+} */
 
 .change-stuff {
   color: gray;

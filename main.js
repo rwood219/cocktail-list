@@ -2,13 +2,10 @@ window.addEventListener("load", () => {
   const randomURL = `https://www.thecocktaildb.com/api/json/v1/1/random.php`;
   const searchURL = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=`;
   const picClick = document.querySelector(".thumb-nail-images").children;
-
+  
   createListItem = (text) => {
     let li = document.createElement("li");
     li.textContent = text;
-    li.addEventListener("click", () => {
-      console.log("clicked");
-    });
     return li;
   };
 
@@ -18,7 +15,6 @@ window.addEventListener("load", () => {
     return val1 + " " + val2;
   };
 
-  //ADD CLICK LISTENER TO PIC ELEMENTS AND SET fetch param
   for (let i = 0; i < picClick.length; i++) {
     picClick[i].addEventListener("click", () => {
       fetchData((urlParam = picClick[i].textContent));
@@ -29,17 +25,43 @@ window.addEventListener("load", () => {
     fetchData((urlParam = document.getElementById("search").value));
   };
 
+  //CLEARS SEARCH RESULTS & search bar text
+  document.getElementById("clear").addEventListener("click", () => {
+    let recipe = document.getElementById("recipe");
+    recipe.innerHTML = "";
+    let searchText = document.getElementById("search");
+    searchText.value = "";
+  });
+
   fetchData = (urlParam) => {
     fetch(`${searchURL}${urlParam}`).then(function (response) {
       response.json().then(function (data) {
         const recipe = document.getElementById("recipe");
         console.log(data.drinks);
 
+
+        //////////////////////////////////////////////
+
+        for (let i = 0; i < data.drinks.length; i++) {
+          const instructions = data.drinks[i].strInstructions;
+          console.log(instructions);
+        }
+
+        /*        recipe.addEventListener('click', () => {
+            console.log(currrentDrinkSearch.strInstructions)                  
+            recipe.appendChild(createListItem(currrentDrinkSearch.strInstructions))
+          }); */
+
+        //=========================================================
         for (let i = 0; i < data.drinks.length; i++) {
           let currrentDrinkSearch = data.drinks[i];
-
+         let instruction = currrentDrinkSearch.instructions;
+         
+      
           recipe.appendChild(createListItem(currrentDrinkSearch.strDrink));
+        
           recipe.appendChild(document.createElement("br"));
+
           recipe.appendChild(
             createListItem(
               setValue(
@@ -165,19 +187,10 @@ window.addEventListener("load", () => {
               )
             )
           );
-
           recipe.appendChild(document.createElement("br"));
           recipe.appendChild(document.createElement("br"));
         }
       });
     });
   };
-
-  //CLEARS SEARCH RESULTS
-  document.getElementById("clear").addEventListener("click", () => {
-    let recipe = document.getElementById("recipe");
-    recipe.innerHTML = "";
-    let search = document.getElementById("search");
-    search.innerHTML = "";
-  });
 });
