@@ -170,9 +170,10 @@ window.addEventListener("load", () => {
               )
             )
           );
-          
           recipe.appendChild(document.createElement("br"));
 
+
+  
           let div = document.createElement("div");
 
           div.setAttribute("class", "instructions");
@@ -180,14 +181,14 @@ window.addEventListener("load", () => {
           div.textContent = currrentDrinkSearch.strInstructions;
 
           instBtn = document.getElementById("inst");
-          
+
           div.style.display = "none";
-          
+
           instBtn.addEventListener("click", () => {
             div.style.display = "block";
-            console.log("working");
+            console.log("sorta working");
           });
-          
+
           recipe.appendChild(div);
           recipe.appendChild(document.createElement("br"));
           recipe.appendChild(document.createElement("br"));
