@@ -2,7 +2,7 @@ window.addEventListener("load", () => {
   const randomURL = `https://www.thecocktaildb.com/api/json/v1/1/random.php`;
   const searchURL = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=`;
   const picClick = document.querySelector(".thumb-nail-images").children;
-  
+
   createListItem = (text) => {
     let li = document.createElement("li");
     li.textContent = text;
@@ -39,27 +39,10 @@ window.addEventListener("load", () => {
         const recipe = document.getElementById("recipe");
         console.log(data.drinks);
 
-
-        //////////////////////////////////////////////
-
-        for (let i = 0; i < data.drinks.length; i++) {
-          const instructions = data.drinks[i].strInstructions;
-          console.log(instructions);
-        }
-
-        /*        recipe.addEventListener('click', () => {
-            console.log(currrentDrinkSearch.strInstructions)                  
-            recipe.appendChild(createListItem(currrentDrinkSearch.strInstructions))
-          }); */
-
-        //=========================================================
         for (let i = 0; i < data.drinks.length; i++) {
           let currrentDrinkSearch = data.drinks[i];
-         let instruction = currrentDrinkSearch.instructions;
-         
-      
           recipe.appendChild(createListItem(currrentDrinkSearch.strDrink));
-        
+
           recipe.appendChild(document.createElement("br"));
 
           recipe.appendChild(
@@ -187,6 +170,25 @@ window.addEventListener("load", () => {
               )
             )
           );
+          
+          recipe.appendChild(document.createElement("br"));
+
+          let div = document.createElement("div");
+
+          div.setAttribute("class", "instructions");
+
+          div.textContent = currrentDrinkSearch.strInstructions;
+
+          instBtn = document.getElementById("inst");
+          
+          div.style.display = "none";
+          
+          instBtn.addEventListener("click", () => {
+            div.style.display = "block";
+            console.log("working");
+          });
+          
+          recipe.appendChild(div);
           recipe.appendChild(document.createElement("br"));
           recipe.appendChild(document.createElement("br"));
         }
