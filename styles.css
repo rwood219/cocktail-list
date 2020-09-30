@@ -1,13 +1,21 @@
+:root {
+  --main-bg-color: rgb(41, 58, 80);
+  --second-bg-color: rgb(26, 66, 92);
+  --main-text-color: white;
+
+}
+
 * {
   font-family: roboto;
   font-size: large;
   margin: 0px;
   padding: 0px;
-  color: white;
+  color: var(--main-text-color)
 }
 
 body {
-  background-color: rgb(26, 66, 92);
+
+  background-color: var(--second-bg-color);
   background-attachment: fixed;
   margin-right: 100px;
 }
@@ -30,13 +38,13 @@ body {
 
 #inst {
   border: none;
-  background-color: rgb(26, 66, 92);;
-  color:white;
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
   padding: 5px;
 }
 
 .thumb-nail-images > p {
-  color: white;
+  color: var(--main-text-color);
   border-radius: 5px;
   text-align: center;
   opacity: 0.7;
@@ -54,7 +62,7 @@ body {
 }
 
 ul {
-  color: white;
+  color: var(--main-text-color);
   list-style: none;
   padding-top: 500px;
   margin-left: 100px;
@@ -63,8 +71,8 @@ ul {
 header > button {
   border-radius: 25px;
   border: none;
-  color: white;
-  background-color: rgb(54, 92, 122);
+  color: var(--main-text-color);
+  background-color: var(--main-bg-color);
   z-index: 0;
 }
 
@@ -74,14 +82,14 @@ header > button {
   opacity: 0.7;
   margin-left: 0px;
   width: 95%;
-  background-color: rgb(54, 92, 122);
+  background-color: var(--main-bg-color);
 }
 
 header {
   position: fixed;
   margin-right: 20px;
   z-index: 0;
-  background-color: rgb(54, 92, 122);
+  background-color: var(--main-bg-color);
 }
 
 #recipe > li {

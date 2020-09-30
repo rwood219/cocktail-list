@@ -172,8 +172,6 @@ window.addEventListener("load", () => {
           );
           recipe.appendChild(document.createElement("br"));
 
-
-  
           let div = document.createElement("div");
 
           div.setAttribute("class", "instructions");
