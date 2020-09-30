@@ -6,15 +6,12 @@
 
 * {
   font-size: large;
-  margin: 0px;
-  padding: 0px;
   color: var(--main-text-color);
 }
 
 body {
   background-color: var(--second-bg-color);
   background-attachment: fixed;
-  margin-right: 100px;
 }
 
 #clear {
@@ -29,6 +26,8 @@ body {
   grid-gap: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
+  padding: 15px;
+  margin-right: 10px;
   position: relative;
 }
 
@@ -46,19 +45,20 @@ body {
 
 .header-text {
   width: 100vw;
-  margin-top: 25px;
   margin-bottom: 20px;
+  padding-top: 10px;
+
 }
 
 .header-text > h1 {
   text-align: center;
   font-size: 32px;
+  width: 100%;
 }
 
 ul {
   list-style: none;
   padding-top: 500px;
-  margin-left: 100px;
 }
 
 header > button {
@@ -79,7 +79,6 @@ header > button {
 
 header {
   position: fixed;
-  margin-right: 20px;
   z-index: 0;
   background-color: var(--main-bg-color);
 }
@@ -91,4 +90,8 @@ header {
 #recipe {
   padding: 10px;
   padding-top: 300px;
+}
+
+.recipe-list {
+  padding-top: 30px;
 }

@@ -25,7 +25,6 @@ window.addEventListener("load", () => {
     fetchData((urlParam = document.getElementById("search").value));
   };
 
-  //CLEARS SEARCH RESULTS & search bar text
   document.getElementById("clear").addEventListener("click", () => {
     let recipe = document.getElementById("recipe");
     recipe.innerHTML = "";
@@ -188,7 +187,9 @@ window.addEventListener("load", () => {
           });
 
           recipe.appendChild(div);
+
           recipe.appendChild(document.createElement("br"));
+          
           recipe.appendChild(document.createElement("br"));
         }
       });
