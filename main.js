@@ -16,7 +16,6 @@ window.addEventListener("load", () => {
   };
 
   displayData = (val, val1) => {
-    createListItem(setValue());
     return createListItem(setValue(val, val1));
   };
 
@@ -30,14 +29,19 @@ window.addEventListener("load", () => {
     fetchData((urlParam = document.getElementById("search").value));
   };
 
-  document.getElementById("clear").addEventListener("click", () => {
+  clearSearch = () => {
     let recipe = document.getElementById("recipe");
     recipe.innerHTML = "";
     let searchText = document.getElementById("search");
     searchText.value = "";
+  };
+
+  document.getElementById("clear").addEventListener("click", () => {
+    clearSearch();
   });
 
   document.getElementById("random").addEventListener("click", () => {
+    clearSearch();
     fetch(randomURL).then((response) => {
       response.json().then((data) => {
         data = data.drinks[0];
