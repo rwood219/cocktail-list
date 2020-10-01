@@ -21,9 +21,14 @@ window.addEventListener("load", () => {
 
   for (let i = 0; i < picClick.length; i++) {
     picClick[i].addEventListener("click", () => {
+      clearSearch();
       fetchData((urlParam = picClick[i].textContent));
     });
   }
+
+  document.querySelector('#search').addEventListener('click', () => {
+      clearSearch();
+  })
 
   getSearch = () => {
     fetchData((urlParam = document.getElementById("search").value));
@@ -42,6 +47,7 @@ window.addEventListener("load", () => {
 
   setUiData = (text) => {
     recipe.appendChild(displayData(text.strDrink, null));
+    recipe.appendChild(document.createElement("br"));
     recipe.appendChild(displayData(text.strIngredient1, text.strMeasure1));
     recipe.appendChild(displayData(text.strIngredient2, text.strMeasure2));
     recipe.appendChild(displayData(text.strIngredient3, text.strMeasure3));
@@ -57,6 +63,16 @@ window.addEventListener("load", () => {
     recipe.appendChild(displayData(text.strIngredient13, text.strMeasure13));
     recipe.appendChild(displayData(text.strIngredient14, text.strMeasure14));
     recipe.appendChild(displayData(text.strIngredient15, text.strMeasure15));
+
+    let div = document.createElement("div");
+    div.setAttribute("class", "instructions");
+    div.textContent = text.strInstructions;
+    div.style.display = "none";
+
+    recipe.addEventListener("click", () => {
+      div.style.display = "block";
+    });
+    recipe.appendChild(div);
   };
 
   document.getElementById("random").addEventListener("click", () => {
@@ -75,9 +91,7 @@ window.addEventListener("load", () => {
         const recipe = document.getElementById("recipe");
         for (let i = 0; i < data.drinks.length; i++) {
           let currrentDrinkSearch = data.drinks[i];
-
           setUiData(currrentDrinkSearch);
-
           recipe.appendChild(document.createElement("br"));
 
           let div = document.createElement("div");
