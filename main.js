@@ -15,6 +15,11 @@ window.addEventListener("load", () => {
     return val1 + " " + val2;
   };
 
+  displayData = (val, val1) => {
+    createListItem(setValue());
+    return createListItem(setValue(val, val1));
+  };
+
   for (let i = 0; i < picClick.length; i++) {
     picClick[i].addEventListener("click", () => {
       fetchData((urlParam = picClick[i].textContent));
@@ -32,143 +37,145 @@ window.addEventListener("load", () => {
     searchText.value = "";
   });
 
+  document.getElementById("random").addEventListener("click", () => {
+    fetch(randomURL).then((response) => {
+      response.json().then((data) => {
+        data = data.drinks[0];
+        console.log(data);
+        let recipe = document.getElementById("recipe");
+        recipe.appendChild(displayData(data.strDrink, null));
+        recipe.appendChild(displayData(data.strIngredient1, data.strMeasure1));
+        recipe.appendChild(displayData(data.strIngredient2, data.strMeasure2));
+        recipe.appendChild(displayData(data.strIngredient3, data.strMeasure3));
+        recipe.appendChild(displayData(data.strIngredient4, data.strMeasure4));
+        recipe.appendChild(displayData(data.strIngredient5, data.strMeasure5));
+        recipe.appendChild(displayData(data.strIngredient6, data.strMeasure6));
+        recipe.appendChild(displayData(data.strIngredient7, data.strMeasure7));
+        recipe.appendChild(displayData(data.strIngredient8, data.strMeasure8));
+        recipe.appendChild(displayData(data.strIngredient9, data.strMeasure9));
+        recipe.appendChild(
+          displayData(data.strIngredient10, data.strMeasure10)
+        );
+        recipe.appendChild(
+          displayData(data.strIngredient11, data.strMeasure11)
+        );
+        recipe.appendChild(
+          displayData(data.strIngredient12, data.strMeasure12)
+        );
+        recipe.appendChild(
+          displayData(data.strIngredient13, data.strMeasure13)
+        );
+        recipe.appendChild(
+          displayData(data.strIngredient14, data.strMeasure14)
+        );
+        recipe.appendChild(
+          displayData(data.strIngredient15, data.strMeasure15)
+        );
+      });
+    });
+  });
+
   fetchData = (urlParam) => {
-    fetch(`${searchURL}${urlParam}`).then(function (response) {
-      response.json().then(function (data) {
+    fetch(`${searchURL}${urlParam}`).then((response) => {
+      response.json().then((data) => {
         const recipe = document.getElementById("recipe");
         console.log(data.drinks);
-
         for (let i = 0; i < data.drinks.length; i++) {
           let currrentDrinkSearch = data.drinks[i];
           recipe.appendChild(createListItem(currrentDrinkSearch.strDrink));
-
           recipe.appendChild(document.createElement("br"));
-
           recipe.appendChild(
-            createListItem(
-              setValue(
-                currrentDrinkSearch.strIngredient1,
-                currrentDrinkSearch.strMeasure1
-              )
+            displayData(
+              currrentDrinkSearch.strIngredient1,
+              currrentDrinkSearch.strMeasure1
             )
           );
 
           recipe.appendChild(
-            createListItem(
-              setValue(
-                currrentDrinkSearch.strIngredient2,
-                currrentDrinkSearch.strMeasure2
-              )
+            displayData(
+              currrentDrinkSearch.strIngredient2,
+              currrentDrinkSearch.strMeasure2
+            )
+          );
+          recipe.appendChild(
+            displayData(
+              currrentDrinkSearch.strIngredient3,
+              currrentDrinkSearch.strMeasure3
+            )
+          );
+          recipe.appendChild(
+            displayData(
+              currrentDrinkSearch.strIngredient4,
+              currrentDrinkSearch.strMeasure4
+            )
+          );
+          recipe.appendChild(
+            displayData(
+              currrentDrinkSearch.strIngredient5,
+              currrentDrinkSearch.strMeasure5
+            )
+          );
+          recipe.appendChild(
+            displayData(
+              currrentDrinkSearch.strIngredient6,
+              currrentDrinkSearch.strMeasure6
+            )
+          );
+          recipe.appendChild(
+            displayData(
+              currrentDrinkSearch.strIngredient7,
+              currrentDrinkSearch.strMeasure7
+            )
+          );
+          recipe.appendChild(
+            displayData(
+              currrentDrinkSearch.strIngredient8,
+              currrentDrinkSearch.strMeasure8
+            )
+          );
+          recipe.appendChild(
+            displayData(
+              currrentDrinkSearch.strIngredient9,
+              currrentDrinkSearch.strMeasure9
+            )
+          );
+          recipe.appendChild(
+            displayData(
+              currrentDrinkSearch.strIngredient10,
+              currrentDrinkSearch.strMeasure10
+            )
+          );
+          recipe.appendChild(
+            displayData(
+              currrentDrinkSearch.strIngredient11,
+              currrentDrinkSearch.strMeasure11
+            )
+          );
+          recipe.appendChild(
+            displayData(
+              currrentDrinkSearch.strIngredient12,
+              currrentDrinkSearch.strMeasure12
+            )
+          );
+          recipe.appendChild(
+            displayData(
+              currrentDrinkSearch.strIngredient13,
+              currrentDrinkSearch.strMeasure13
+            )
+          );
+          recipe.appendChild(
+            displayData(
+              currrentDrinkSearch.strIngredient14,
+              currrentDrinkSearch.strMeasure14
+            )
+          );
+          recipe.appendChild(
+            displayData(
+              currrentDrinkSearch.strIngredient15,
+              currrentDrinkSearch.strMeasure15
             )
           );
 
-          recipe.appendChild(
-            createListItem(
-              setValue(
-                currrentDrinkSearch.strIngredient3,
-                currrentDrinkSearch.strMeasure3
-              )
-            )
-          );
-
-          recipe.appendChild(
-            createListItem(
-              setValue(
-                currrentDrinkSearch.strIngredient4,
-                currrentDrinkSearch.strMeasure4
-              )
-            )
-          );
-
-          recipe.appendChild(
-            createListItem(
-              setValue(
-                currrentDrinkSearch.strIngredient5,
-                currrentDrinkSearch.strMeasure5
-              )
-            )
-          );
-
-          recipe.appendChild(
-            createListItem(
-              setValue(
-                currrentDrinkSearch.strIngredient6,
-                currrentDrinkSearch.strMeasure6
-              )
-            )
-          );
-          recipe.appendChild(
-            createListItem(
-              setValue(
-                currrentDrinkSearch.strIngredient7,
-                currrentDrinkSearch.strMeasure7
-              )
-            )
-          );
-          recipe.appendChild(
-            createListItem(
-              setValue(
-                currrentDrinkSearch.strIngredient8,
-                currrentDrinkSearch.strMeasure8
-              )
-            )
-          );
-          recipe.appendChild(
-            createListItem(
-              setValue(
-                currrentDrinkSearch.strIngredient9,
-                currrentDrinkSearch.strMeasure9
-              )
-            )
-          );
-          recipe.appendChild(
-            createListItem(
-              setValue(
-                currrentDrinkSearch.strIngredient10,
-                currrentDrinkSearch.strMeasure10
-              )
-            )
-          );
-          recipe.appendChild(
-            createListItem(
-              setValue(
-                currrentDrinkSearch.strIngredien11,
-                currrentDrinkSearch.strMeasure11
-              )
-            )
-          );
-          recipe.appendChild(
-            createListItem(
-              setValue(
-                currrentDrinkSearch.strIngredient12,
-                currrentDrinkSearch.strMeasure12
-              )
-            )
-          );
-          recipe.appendChild(
-            createListItem(
-              setValue(
-                currrentDrinkSearch.strIngredient13,
-                currrentDrinkSearch.strMeasure13
-              )
-            )
-          );
-          recipe.appendChild(
-            createListItem(
-              setValue(
-                currrentDrinkSearch.strIngredient14,
-                currrentDrinkSearch.strMeasure14
-              )
-            )
-          );
-          recipe.appendChild(
-            createListItem(
-              setValue(
-                currrentDrinkSearch.strIngredient15,
-                currrentDrinkSearch.strMeasure15
-              )
-            )
-          );
           recipe.appendChild(document.createElement("br"));
 
           let div = document.createElement("div");
@@ -189,7 +196,7 @@ window.addEventListener("load", () => {
           recipe.appendChild(div);
 
           recipe.appendChild(document.createElement("br"));
-          
+
           recipe.appendChild(document.createElement("br"));
         }
       });
