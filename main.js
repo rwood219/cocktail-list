@@ -24,11 +24,25 @@ window.addEventListener("load", () => {
       clearSearch();
       fetchData((urlParam = picClick[i].textContent));
     });
-  }
+  };
 
-  document.querySelector('#search').addEventListener('click', () => {
-      clearSearch();
-  })
+  const searchInput = document.querySelector("#search");
+
+  searchInput.addEventListener("keydown", (e) => {
+    if (e.keyCode === 8) {
+      clearSearch()
+    }
+  });
+
+  searchInput.addEventListener("click", () => {
+    clearSearch();
+  });
+
+  searchInput.addEventListener("keydown", (e) => {
+    if (e.keyCode === 13) {
+      getSearch()
+    }
+  });
 
   getSearch = () => {
     fetchData((urlParam = document.getElementById("search").value));
@@ -63,12 +77,10 @@ window.addEventListener("load", () => {
     recipe.appendChild(displayData(text.strIngredient13, text.strMeasure13));
     recipe.appendChild(displayData(text.strIngredient14, text.strMeasure14));
     recipe.appendChild(displayData(text.strIngredient15, text.strMeasure15));
-
     let div = document.createElement("div");
     div.setAttribute("class", "instructions");
     div.textContent = text.strInstructions;
     div.style.display = "none";
-
     recipe.addEventListener("click", () => {
       div.style.display = "block";
     });
@@ -80,6 +92,7 @@ window.addEventListener("load", () => {
     fetch(randomURL).then((response) => {
       response.json().then((data) => {
         data = data.drinks[0];
+        console.log(data);
         setUiData(data);
       });
     });
@@ -90,21 +103,7 @@ window.addEventListener("load", () => {
       response.json().then((data) => {
         const recipe = document.getElementById("recipe");
         for (let i = 0; i < data.drinks.length; i++) {
-          let currrentDrinkSearch = data.drinks[i];
-          setUiData(currrentDrinkSearch);
-          recipe.appendChild(document.createElement("br"));
-
-          let div = document.createElement("div");
-          div.setAttribute("class", "instructions");
-          div.textContent = currrentDrinkSearch.strInstructions;
-          div.style.display = "none";
-
-          recipe.addEventListener("click", () => {
-            div.style.display = "block";
-            console.log("sorta working");
-          });
-
-          recipe.appendChild(div);
+          setUiData(data.drinks[i]);
           recipe.appendChild(document.createElement("br"));
           recipe.appendChild(document.createElement("br"));
         }
